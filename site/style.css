@@ -1,0 +1,64 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  --item-height: 20vh;
+  --item-width: 20vw;
+}
+
+#gif-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gif-item {
+  width: var(--item-width);
+  height: var(--item-height);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.gif-item::after {
+  content: "";
+  background: rgb(2, 2, 2);
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  z-index: 0;
+}
+
+.gif-item::after {
+  content: attr(data-title);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.gif-item:hover::after {
+  content: attr(data-title);
+  background: rgba(0, 0, 0, 0.8);
+  font: serif;
+  opacity: 1;
+  color: white;
+  text-align: center;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  z-index: 2;
+  padding-top: 25%;
+  box-sizing: border-box;
+}
+
+.gif-item > img,
+.gif-item > video {
+  /*width: 100%;*/
+  height: 100%;
+  z-index: 1;
+}

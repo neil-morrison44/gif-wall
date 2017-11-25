@@ -1,0 +1,27 @@
+{
+  "name": "gif-wall",
+  "version": "1.0.0",
+  "description": "A node app that Fullscreens a wall of gifs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://neil-morrison44@github.com/neil-morrison44/gif-wall.git"
+  },
+  "keywords": [
+    "gifs",
+    "video",
+    "wall"
+  ],
+  "author": "Neil Morrison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neil-morrison44/gif-wall/issues"
+  },
+  "homepage": "https://github.com/neil-morrison44/gif-wall#readme",
+  "dependencies": {
+    "nightmare": "^2.10.0"
+  }
+}
