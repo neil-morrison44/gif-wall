@@ -1,7 +1,7 @@
 const Nightmare = require("nightmare");
 const request = require("request");
 
-const Size = 5;
+const Size = 6;
 const Count = Size * Size;
 const rc = Count + 3;
 const Subreddit = "silentmoviegifs"; //"gifs";
@@ -60,7 +60,9 @@ function transformRedditResponse(response) {
   });
   return gifs.map(gif => {
     var newUrl = gif.url;
-    if (gif.url.endsWith(".gif")) {
+    if (gif.url.endsWith(".gif") && gif.url.includes("imgur")) {
+      newUrl = gif.url.replace(".gif", ".mp4");
+    } else if (gif.url.endsWith(".gif")) {
       newUrl = gif.url;
     } else if (gif.url.endsWith(".gifv")) {
       newUrl = gif.url.replace(".gifv", ".mp4");
