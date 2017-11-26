@@ -1,10 +1,11 @@
 const Nightmare = require("nightmare");
 const request = require("request");
 
-const Size = 6;
+const Size = 5;
 const Count = Size * Size;
-const silentMovieGifsURL = `http://www.reddit.com/r/silentmoviegifs.json?count=${Count +
-  2}&limit=${Count + 2}`;
+const rc = Count + 3;
+const Subreddit = "silentmoviegifs"; //"gifs";
+const gifsURL = `http://www.reddit.com/r/${Subreddit}.json?count=${rc}&limit=${rc}`;
 
 Nightmare.action(
   "fullScreen",
@@ -50,9 +51,8 @@ function transformRedditResponse(response) {
   var gifs = response.map(r => {
     return { title: r.data.title, url: r.data.url };
   });
-  console.log(gifs);
   gifs = gifs.filter(gif => {
-    if (gif.url.includes("https://imgur.com/a/")) {
+    if (gif.url.includes("imgur.com/a/") || gif.url.includes("www.reddit")) {
       return false;
     } else {
       return true;
@@ -65,7 +65,7 @@ function transformRedditResponse(response) {
     } else if (gif.url.endsWith(".gifv")) {
       newUrl = gif.url.replace(".gifv", ".mp4");
     } else if (gif.url.includes("gfycat")) {
-      newURl = gif.url.replace("gfycat", "giant.gfycat") + ".mp4";
+      newUrl = gif.url.replace("gfycat", "giant.gfycat") + ".mp4";
     } else {
       newUrl = gif.url + ".mp4";
     }
@@ -75,7 +75,7 @@ function transformRedditResponse(response) {
 
 request.get(
   {
-    url: silentMovieGifsURL,
+    url: gifsURL,
     json: true
   },
   (err, res, data) => {
