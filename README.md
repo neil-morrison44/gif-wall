@@ -10,4 +10,6 @@ Press `esc` (or wait 11.5 days) to exit.
 
 Edit the `Size` variable to change the count of rows / columns
 
+![Video 1](https://thumbs.gfycat.com/AnchoredMisguidedCoral-size_restricted.gif)
+
 ![Screenshot 1](https://i.imgur.com/9YS6Chz.jpg)
